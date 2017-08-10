@@ -10,3 +10,6 @@
   LINK : https://github.com/SandroMachado/openalpr-android/blob/master/openalpr.conf
 3. change in file openalpr.conf the package in runtime_dir by project package
 4. for plate in eu in recognizationWithCountryRegionNConfig method first param will be : "eu"
+
+link project : 
+https://github.com/SandroMachado/openalpr-android
