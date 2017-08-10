@@ -75,11 +75,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE && resultCode == Activity.RESULT_OK) {
             final ProgressDialog progress = ProgressDialog.show(this, "Loading", "Parsing result...", true);
-            Log.i("Test",ANDROID_DATA_DIR);
-            //not work
             final String openAlprConfFile = ANDROID_DATA_DIR + File.separatorChar + "runtime_data" + File.separatorChar + "openalpr.conf";
-            //work : open from assets directly
-            File fileAsset  = null;
+            /*File fileAsset  = null;
             try {
                 //get from assets
                 InputStream inputStream = getAssets().open("openalpr.conf");
@@ -94,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 outpu.flush();
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.i("Test",e.getMessage());
-            }
+                Log.e("Test",e.getMessage());
+            }*/
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 10;
 
@@ -103,12 +100,11 @@ public class MainActivity extends AppCompatActivity {
             Picasso.with(MainActivity.this).load(destination).fit().centerCrop().into(imageView);
             resultTextView.setText("Processing");
 
-            final String openAlprConfFile2 = fileAsset.getPath();
+            //final String openAlprConfFile2 = fileAsset.getPath();
 
             AsyncTask.execute(new Runnable() {
                 @Override
                 public void run() {
-                    Log.i("Test",destination.getAbsolutePath());
                     //configure for plate here :
                     String result = OpenALPR.Factory.create(MainActivity.this, ANDROID_DATA_DIR).recognizeWithCountryRegionNConfig("eu", "", destination.getAbsolutePath(), openAlprConfFile, 10);
 
