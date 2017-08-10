@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     Log.i("Test",destination.getAbsolutePath());
                     //configure for plate here :
-                    String result = OpenALPR.Factory.create(MainActivity.this, ANDROID_DATA_DIR).recognizeWithCountryRegionNConfig("eu", "", destination.getAbsolutePath(), openAlprConfFile2, 10);
+                    String result = OpenALPR.Factory.create(MainActivity.this, ANDROID_DATA_DIR).recognizeWithCountryRegionNConfig("eu", "", destination.getAbsolutePath(), openAlprConfFile, 10);
 
                     Log.d("OPEN ALPR", result);
 
